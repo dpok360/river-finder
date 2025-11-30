@@ -1,0 +1,21 @@
+services:
+  mongo:
+    image: mongo:8
+    container_name: river-finder-db
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ./data:/data/db
+
+  api:
+    build: .
+    container_name: river-finder-api
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    environment:
+      MONGO_URI: "mongodb://${DB_USERNAME}:${DB_PASSWORD}@mongo:27017/${MONGO_DB}?authSource=admin"
