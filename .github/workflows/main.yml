@@ -15,8 +15,8 @@ jobs:
       - name: Deploy to Server
         uses: fifsky/ssh-action@master
         with:
-          host: ${{ secrets.DB_HOST }}
-          user: ${{ secrets.DB_USERNAME }}
+          host: ${{ secrets.HOST }}
+          user: ${{ secrets.USERNAME }}
           key: ${{ secrets.MAIN_PRIVATE_KEY }}
           command: |
             cd /root/projects/river-finder-backend
