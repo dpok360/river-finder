@@ -22,3 +22,13 @@ export interface IRiver extends Document {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export interface RiverData {
+    osmId: string;
+    name: string;
+    type: string;
+    geometry: any;
+    properties: any;
+    boundingBox: any;
+}
+

@@ -1,28 +1,14 @@
-# Use the official Node.js 20 image
-FROM node:20-slim
+FROM node:20-alpine
 
-LABEL maintainer="deepak.suyavanshi.360@gmail.com"
-
-# Install system dependencies including OpenSSL
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    libssl-dev \
-    && rm -rf /var/lib/apt/lists/*
-
-# Set the working directory inside the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json (or yarn.lock)
-COPY package*.json ./
+COPY package.json yarn.lock ./
+RUN yarn install --frozen-lockfile
 
-# Install dependencies
-RUN npm install -g npm@latest
-RUN npm install --legacy-peer-deps --build-from-source
-
-# Copy the rest of the application files
 COPY . .
 
-# Build the Express application
-RUN npm run build
+RUN yarn build
 
-# Set the default command to run the application
-CMD ["npm", "run", "start"]
+EXPOSE 3000
+
+CMD ["yarn", "start"]

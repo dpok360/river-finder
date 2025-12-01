@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import app from './app.js';
 import { connectDB } from './config/database.js';
+import { DEFAULT_PORT } from './config/constants.js';
 
 process.on('uncaughtException', (err) => {
   console.log('UNCAUGHT EXCEPTION! Shutting down...');
@@ -8,7 +9,7 @@ process.on('uncaughtException', (err) => {
   process.exit(1);
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || DEFAULT_PORT;
 
 const startServer = async () => {
   await connectDB();
