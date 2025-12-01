@@ -19,7 +19,7 @@ jobs:
           user: ${{ secrets.USERNAME }}
           key: ${{ secrets.MAIN_PRIVATE_KEY }}
           command: |
-            sudo cd /home/ubuntu/projects/river-finder
+            cd /home/ubuntu/projects/river-finder
             git reset --hard
             git pull origin main
             sudo docker compose -f docker-compose.yml up -d --build
