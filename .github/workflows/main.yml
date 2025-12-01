@@ -1,0 +1,25 @@
+name: Node CI
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy to Server
+        uses: fifsky/ssh-action@master
+        with:
+          host: ${{ secrets.DB_HOST }}
+          user: ${{ secrets.DB_USERNAME }}
+          key: ${{ secrets.MAIN_PRIVATE_KEY }}
+          command: |
+            cd /root/projects/river-finder-backend
+            git reset --hard
+            git pull origin main
+            sudo docker compose -f docker-compose.yml up -d --build
