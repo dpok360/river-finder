@@ -1,4 +1,5 @@
-import 'dotenv/config';
+import dotenv from 'dotenv';
+dotenv.config({ path: process.env.NODE_ENV === 'development' ? '.env.local' : '.env' });
 import app from './app.js';
 import { connectDB } from './config/database.js';
 import { DEFAULT_PORT } from './config/constants.js';
