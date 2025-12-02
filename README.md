@@ -136,6 +136,7 @@ curl "http://3.91.253.93/api/rivers/nearby?lat=27.7172&lng=80.3240&radius=1"
 ```
 
 For complete API documentation, see:
+- [API Reference](docs/README.md)
 - [Postman Documentation](https://documenter.getpostman.com/view/33442960/2sB3dMwAw2)
 
 ## Project Structure
@@ -225,6 +226,17 @@ The API is production-ready with:
 ```bash
 curl "http://3.91.253.93/api/rivers/nearby?lat=27.7172&lng=80.3240&radius=1"
 ```
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+## License
+
+[Add your license here]
 
 ## Links
 
